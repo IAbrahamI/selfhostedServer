@@ -1,0 +1,28 @@
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000  
+      - PGID=1000  
+      - TZ=Europe/Zurich
+      - VERSION=docker
+      # Optional: Claim your server with a claim token from https://www.plex.tv/claim/
+      # - PLEX_CLAIM=claim-xxxxxxxxxx
+    volumes:
+      - ./config:/config
+      # NAS mounted media directories (as read-only)
+      - type: bind
+        source: /mnt/nas/media/Movies
+        target: /media/movies
+        read_only: true
+      - type: bind
+        source: /mnt/nas/media/TVShows
+        target: /media/shows
+        read_only: true
+      - type: bind
+        source: /mnt/nas/media/Music
+        target: /media/music
+        read_only: true
+    restart: unless-stopped
