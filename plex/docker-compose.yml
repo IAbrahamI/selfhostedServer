@@ -18,8 +18,8 @@ services:
         target: /media/movies
         read_only: true
       - type: bind
-        source: /mnt/nas/media/TVShows
-        target: /media/shows
+        source: /mnt/nas/media/TV_Shows
+        target: /media/tv
         read_only: true
       - type: bind
         source: /mnt/nas/media/Music
