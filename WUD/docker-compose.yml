@@ -1,0 +1,13 @@
+services:
+  wud:
+    image: getwud/wud:latest
+    container_name: wud
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - network_name_here
+
+networks:
+  network_name_here:
+    external: true
