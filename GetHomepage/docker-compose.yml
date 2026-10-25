@@ -1,0 +1,16 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=dashboard.home.lan
+    networks:
+      - network_name_here
+
+networks:
+  network_name_here:
+    external: true
+    name: network_name_here
